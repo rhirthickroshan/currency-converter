@@ -7,19 +7,26 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @Service
 public class CustomerUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public CustomerUserDetailsService(UserRepository userRepository) {
+    private final Logger logger;
+
+    public CustomerUserDetailsService(UserRepository userRepository, Logger logger) {
         this.userRepository = userRepository;
+        this.logger = logger;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
 
+        logger.log(Level.INFO,"For dummy commit");
         User user = userRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() ->
                         new UsernameNotFoundException(
