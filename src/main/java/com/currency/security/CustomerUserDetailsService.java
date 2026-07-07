@@ -15,18 +15,17 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    private final Logger logger;
 
-    public CustomerUserDetailsService(UserRepository userRepository, Logger logger) {
+
+    public CustomerUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.logger = logger;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
 
-        logger.log(Level.INFO,"For dummy commit");
+        //logger.log(Level.INFO,"For dummy commit");
         User user = userRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() ->
                         new UsernameNotFoundException(
