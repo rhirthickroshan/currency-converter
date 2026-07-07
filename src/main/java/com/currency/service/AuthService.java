@@ -42,7 +42,6 @@ public class AuthService {
             throw new CurrencyException("Register Request is null");
         }
         String email = registerRequest.getEmail();
-        System.out.println(email);
         if (email == null) {
             throw new CurrencyException("Please provide a valid email");
         }
@@ -51,6 +50,9 @@ public class AuthService {
             throw new UserAlreadyExistsException("The user is already present for this email " + registerRequest.getEmail());
         }
         User user = authMapper.toUser(registerRequest);
+        if(user.getEmail().length()>1){
+
+        }
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         userService.createUser(user);
         return new ResponseEntity<>("User Registered Successfully ", HttpStatus.CREATED);
