@@ -21,16 +21,7 @@ pipeline {
                 bat 'mvnw.cmd test'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                bat 'docker build -t currency-converter .'
-            }
-        }
-        stage('Run Docker Container') {
-             steps {
-                bat 'docker compose up -d'
-             }
-        }
+
 
     }
 

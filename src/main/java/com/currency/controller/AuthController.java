@@ -3,8 +3,6 @@ package com.currency.controller;
 
 import com.currency.dto.LoginRequest;
 import com.currency.dto.RegisterRequest;
-import com.currency.exception.custom.CurrencyException;
-import com.currency.exception.custom.UserAlreadyExistsException;
 import com.currency.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
